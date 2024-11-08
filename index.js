@@ -20,13 +20,13 @@ app.get("/produtos", async (req, res) => {
 });
 
 app.post("/produtos", async (req, res) => {
-  const { nome, preco, qntd_estoque } = req.body;
+  const { nome, preco, qtde_estoque} = req.body;
 
   try {
     const consulta =
-      "INSERT INTO produtos (nome, preco, qntd_estoque) VALUES ($1, $2, $3)"; // Correção aqui
+      "INSERT INTO produtos (nome, preco, qtde_estoque) VALUES ($1, $2, $3)"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qntd_estoque]);
+    await pool.query(consulta, [nome, preco, qtde_estoque]);
 
     res.status(201).json({ message: "Produto cadastrado com sucesso" });
   } catch (error) {
@@ -38,13 +38,13 @@ app.post("/produtos", async (req, res) => {
 
 app.put("/produtos/:id", async (req, res) => {
   const { id } = req.params;
-  const { nome, preco, qntd_estoque } = req.body;
+  const { nome, preco, qtde_estoque } = req.body;
 
   try {
     const consulta =
-      "UPDATE produtos SET nome = $1, preco = $2, qntd_estoque = $3 WHERE id = $4"; // Correção aqui
+      "UPDATE produtos SET nome = $1, preco = $2, qtde_estoque = $3 WHERE id = $4"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qntd_estoque, id]);
+    await pool.query(consulta, [nome, preco, qtde_estoque, id]);
     res.status(200).json({ message: "Produto atualizado com sucesso" });
   } catch (error) {
     res
@@ -85,9 +85,9 @@ app.get("/produtos/:id", async (req, res) => {
 
   try {
     const consulta =
-      "SELECT * FROM produtos SET nome = $1, preco = $2, qntd_estoque = $3 WHERE id = $4"; // Correção aqui
+      "SELECT * FROM produtos SET nome = $1, preco = $2, qtde_estoque = $3 WHERE id = $4"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qntd_estoque, id]);
+    await pool.query(consulta, [nome, preco, qtde_estoque, id]);
     res.status(200).json({ message: "Produto visualizado com sucesso" });
   } catch (error) {
     res
@@ -97,13 +97,13 @@ app.get("/produtos/:id", async (req, res) => {
 });
 
 app.post("/produtos", async (req, res) => {
-  const { nome, preco, qntd_estoque } = req.body;
+  const { nome, preco, qtde_estoque} = req.body;
 
   try {
     const consulta =
-      "INSERT INTO produtos (nome, preco, qntd_estoque) VALUES ($1, $2, $3)"; // Correção aqui
+      "INSERT INTO produtos (nome, preco, qtde_estoque) VALUES ($1, $2, $3)"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qntd_estoque]);
+    await pool.query(consulta, [nome, preco, qtde_estoque]);
 
     res.status(201).json({ message: "Produto cadastrado com sucesso" });
   } catch (error) {
@@ -115,13 +115,13 @@ app.post("/produtos", async (req, res) => {
 
 app.put("/produtos/:id", async (req, res) => {
   const { id } = req.params;
-  const { nome, preco, qntd_estoque } = req.body;
+  const { nome, preco, qtde_estoque } = req.body;
 
   try {
     const consulta =
-      "UPDATE produtos SET nome = $1, preco = $2, qntd_estoque = $3 WHERE id = $4"; // Correção aqui
+      "UPDATE produtos SET nome = $1, preco = $2, qtde_estoque = $3 WHERE id = $4"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qntd_estoque, id]);
+    await pool.query(consulta, [nome, preco, qtde_estoque, id]);
     res.status(200).json({ message: "Produto atualizado com sucesso" });
   } catch (error) {
     res
