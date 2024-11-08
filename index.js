@@ -81,7 +81,7 @@ app.get("/produtos", async (req, res) => {
 
 app.get("/produtos/:id", async (req, res) => {
   const { id } = req.params;
-  const { nome, preco, qntd_estoque } = req.body;
+  const { nome, preco, qtde_estoque } = req.body;
 
   try {
     const consulta =
