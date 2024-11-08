@@ -81,13 +81,12 @@ app.get("/produtos", async (req, res) => {
 
 app.get("/produtos/:id", async (req, res) => {
   const { id } = req.params;
-  const { nome, preco, qtde_estoque } = req.body;
 
   try {
     const consulta =
-      "SELECT * FROM produtos SET nome = $1, preco = $2, qtde_estoque = $3 WHERE id = $4"; // Correção aqui
+      "SELECT * FROM produtos WHERE id = $1"; // Correção aqui
 
-    await pool.query(consulta, [nome, preco, qtde_estoque, id]);
+    await pool.query(consulta, [id]);
     res.status(200).json({ message: "Produto visualizado com sucesso" });
   } catch (error) {
     res
@@ -160,13 +159,12 @@ app.get("/clientes", async (req, res) => {
 
 app.get("/clientes/:id", async (req, res) => {
   const { id } = req.params;
-  const { nome, cpf, telefone } = req.body;
 
   try {
     const consulta =
-      "SELECT * FROM clientes SET nome = $1, cpf = $2, telefone= $3 WHERE id = $4"; // Correção aqui
+      "SELECT * FROM clientes WHERE id = $1"; // Correção aqui
 
-    await pool.query(consulta, [nome, cpf, telefone, id]);
+    await pool.query(consulta, [id]);
     res.status(200).json({ message: "cliente visualizado com sucesso" });
   } catch (error) {
     res
